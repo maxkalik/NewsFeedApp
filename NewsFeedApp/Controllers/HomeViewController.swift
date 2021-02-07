@@ -9,24 +9,14 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    let tableView = UITableView()
+    private var tableViewDataSource: HomeTableViewDataSource?
+    
     weak var coordinator: MainCoordinator?
+    // var selectedLink: String?
+    var safeArea: UILayoutGuide!
     
-    var selectedLink: String?
-    
-    private lazy var helloLabel: UILabel = {
-        let helloLabel = UILabel()
-        helloLabel.translatesAutoresizingMaskIntoConstraints = false
-        helloLabel.text = "Hello!"
-        return helloLabel
-    }()
-    
-    private lazy var someButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 200, y: 200, width: 50, height: 50))
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Start", for: .normal)
-        button.backgroundColor = .blue
-        return button
-    }()
+    var data = [String]()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -39,40 +29,28 @@ class HomeViewController: UIViewController {
     override func loadView() {
         view = UIView()
         view.backgroundColor = .white
-        title = "Welcome"
-        
-        configureSubviews()
-        setupConstrains()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        safeArea = view.layoutMarginsGuide
         getNewsFeed()
+        setupTableView()
+        title = "News Feed"
     }
     
-    private func configureSubviews() {
-        view.addSubview(helloLabel)
-        configureButton()
-    }
-    
-    private func configureButton() {
-        someButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        view.addSubview(someButton)
-    }
-    
-    @objc func buttonTapped() {
-        coordinator?.toDetails(with: selectedLink)
-    }
-    
-    private func setupConstrains() {
-        helloLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        helloLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    private func setupTableView() {
+        view.addSubview(tableView)
+
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 500
         
-        someButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        someButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -50).isActive = true
+        tableView.separatorStyle = .none
         
-        someButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -50).isActive = true
-        someButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        tableViewDataSource = HomeTableViewDataSource(tableView: tableView, dataList: data)
     }
     
     private func getNewsFeed() {
@@ -80,13 +58,20 @@ class HomeViewController: UIViewController {
             switch result {
             case .success(let data):
                 print(data.documents.count)
+                let arr = data.documents.map { $0.title }
+                print(arr)
+                DispatchQueue.main.async {
+                    for item in arr {
+                        self.tableViewDataSource?.insertRow(with: item)
+                    }
+                }
+                
+
                 // self.getDocument(from: data.documents.first?.url)
-                self.selectedLink = data.documents.first?.url
+                // self.selectedLink = data.documents.first?.url
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
-
-    
 }

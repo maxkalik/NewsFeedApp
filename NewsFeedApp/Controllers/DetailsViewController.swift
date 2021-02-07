@@ -19,16 +19,21 @@ class DetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("details view")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print(selectedLink ?? "")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getDocument(from: selectedLink)
     }
+    
+    // override func viewDidAppear(_ animated: Bool) {
+    //     super.viewDidAppear(animated)
+    //     print("details view")
+    // }
+    
+    // override func viewDidLoad() {
+    //     super.viewDidLoad()
+    //     print(selectedLink ?? "")
+    //     getDocument(from: selectedLink)
+    // }
     
     override func loadView() {
         view = UIView()

@@ -10,7 +10,6 @@ import Foundation
 struct NewsFeedResponse: Decodable {
     let hasText: Bool?
     let documents: DecodedArray<Document>
-    let collection: [String]
 }
 
 struct Document: Decodable {
