@@ -7,3 +7,6 @@
 
 import Foundation
 
+struct Settings {
+    static let hostname = "https://meduza.io"
+}

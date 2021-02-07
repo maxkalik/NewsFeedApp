@@ -9,12 +9,11 @@ import UIKit
 
 class HomeTableViewDataSource: NSObject, UITableViewDataSource {
     let tableView: UITableView
-    var dataList: [String]
+    var dataList = [Post]()
     
-    init(tableView: UITableView, dataList: [String]) {
+    init(tableView: UITableView) {
         print("table view data source init", dataList)
         self.tableView = tableView
-        self.dataList = dataList
         super.init()
         
         tableView.rowHeight = UITableView.automaticDimension
@@ -31,8 +30,16 @@ class HomeTableViewDataSource: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as? HomeTableViewCell {
-            cell.titleLabel.text = dataList[indexPath.row]
-            cell.dateLabel.text = "2 hours ago"
+            let post = dataList[indexPath.row]
+            cell.titleLabel.text = post.title
+            cell.subTitleLabel.text = post.secondTitle
+            cell.dateLabel.text = Helpers.shared.getDateDifference(from: post.datetime)
+            
+            guard let imageUrlString = post.picture?.mobileRetinaUrl, let imageUrl = URL(string: Settings.hostname + imageUrlString) else { return cell }
+            cell.postImageView.load(from: imageUrl)
+            
+            // print(Settings.hostname + imageUrlString)
+            
             return cell
         }
         return UITableViewCell()
@@ -44,7 +51,7 @@ extension HomeTableViewDataSource: UITableViewDelegate {
         print(indexPath.row)
     }
     
-    func insertRow(with data: String) {
+    func insertRow(with data: Post) {
         dataList.insert(data, at: 0)
         tableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .fade)
     }

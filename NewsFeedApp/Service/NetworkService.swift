@@ -13,7 +13,7 @@ final class NetworkService {
     private init() {}
     
     private let urlSession = URLSession.shared
-    private let baseUrl = URL(string: "https://meduza.io/api/w5/")
+    private let baseUrl = URL(string: "\(Settings.hostname)/api/w5/")
     
     private let jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
@@ -74,7 +74,7 @@ final class NetworkService {
         let queries: [Queries : String] = [
                      .chrono  : "news",
                      .page    : String(pageNumber),
-                     .perPage : String(10),
+                     .perPage : String(20),
                      .locale  : "en"
         ]
         

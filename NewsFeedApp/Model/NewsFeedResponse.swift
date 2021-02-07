@@ -9,10 +9,10 @@ import Foundation
 
 struct NewsFeedResponse: Decodable {
     let hasText: Bool?
-    let documents: DecodedArray<Document>
+    let documents: DecodedArray<Post>
 }
 
-struct Document: Decodable {
+struct Post: Decodable {
     let url: String
     let title: String
     let secondTitle: String?

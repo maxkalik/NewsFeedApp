@@ -13,10 +13,9 @@ class HomeViewController: UIViewController {
     private var tableViewDataSource: HomeTableViewDataSource?
     
     weak var coordinator: MainCoordinator?
-    // var selectedLink: String?
     var safeArea: UILayoutGuide!
     
-    var data = [String]()
+    var data = [Post]()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -50,7 +49,7 @@ class HomeViewController: UIViewController {
         tableView.separatorStyle = .none
         
         
-        tableViewDataSource = HomeTableViewDataSource(tableView: tableView, dataList: data)
+        tableViewDataSource = HomeTableViewDataSource(tableView: tableView)
     }
     
     private func getNewsFeed() {
@@ -58,10 +57,8 @@ class HomeViewController: UIViewController {
             switch result {
             case .success(let data):
                 print(data.documents.count)
-                let arr = data.documents.map { $0.title }
-                print(arr)
                 DispatchQueue.main.async {
-                    for item in arr {
+                    for item in data.documents {
                         self.tableViewDataSource?.insertRow(with: item)
                     }
                 }
@@ -75,3 +72,4 @@ class HomeViewController: UIViewController {
         }
     }
 }
+

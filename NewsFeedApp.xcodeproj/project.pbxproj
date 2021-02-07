@@ -21,6 +21,9 @@
 		118FDD7E25CE028300A5696E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118FDD7D25CE028300A5696E /* DetailsViewController.swift */; };
 		118FDD8325CF066D00A5696E /* HomeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118FDD8225CF066D00A5696E /* HomeTableViewDataSource.swift */; };
 		11C47B4F25D0025700AE89BC /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B4E25D0025700AE89BC /* HomeTableViewCell.swift */; };
+		11C47B5325D0489F00AE89BC /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B5225D0489F00AE89BC /* Date.swift */; };
+		11C47B5625D04FCF00AE89BC /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B5525D04FCF00AE89BC /* UIImageView.swift */; };
+		11C47B5925D058DD00AE89BC /* DateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B5825D058DD00AE89BC /* DateLabel.swift */; };
 		11EBAB2525CC87DF00F14C99 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EBAB2425CC87DF00F14C99 /* Helpers.swift */; };
 		11EBAB6A25CD7E4100F14C99 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EBAB6925CD7E4100F14C99 /* URL.swift */; };
 		11EBAB6E25CD907900F14C99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EBAB6D25CD907900F14C99 /* Constants.swift */; };
@@ -44,6 +47,9 @@
 		118FDD7D25CE028300A5696E /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		118FDD8225CF066D00A5696E /* HomeTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewDataSource.swift; sourceTree = "<group>"; };
 		11C47B4E25D0025700AE89BC /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		11C47B5225D0489F00AE89BC /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		11C47B5525D04FCF00AE89BC /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		11C47B5825D058DD00AE89BC /* DateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLabel.swift; sourceTree = "<group>"; };
 		11EBAB2425CC87DF00F14C99 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		11EBAB6925CD7E4100F14C99 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		11EBAB6D25CD907900F14C99 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -152,6 +158,8 @@
 			children = (
 				117142DF25CC020E00A76E95 /* URLSession.swift */,
 				11EBAB6925CD7E4100F14C99 /* URL.swift */,
+				11C47B5225D0489F00AE89BC /* Date.swift */,
+				11C47B5525D04FCF00AE89BC /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -160,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				11C47B4E25D0025700AE89BC /* HomeTableViewCell.swift */,
+				11C47B5825D058DD00AE89BC /* DateLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,9 +259,12 @@
 				118FDD8325CF066D00A5696E /* HomeTableViewDataSource.swift in Sources */,
 				117142BA25CBFF4200A76E95 /* AppDelegate.swift in Sources */,
 				114D5AF925CDF2AF007B23A9 /* HomeViewController.swift in Sources */,
+				11C47B5325D0489F00AE89BC /* Date.swift in Sources */,
 				117142E025CC020E00A76E95 /* URLSession.swift in Sources */,
 				11EBAB7225CD9E0900F14C99 /* NewsDetailsResponse.swift in Sources */,
 				11EBAB6E25CD907900F14C99 /* Constants.swift in Sources */,
+				11C47B5925D058DD00AE89BC /* DateLabel.swift in Sources */,
+				11C47B5625D04FCF00AE89BC /* UIImageView.swift in Sources */,
 				114D5AEE25CDEF62007B23A9 /* Coordinator.swift in Sources */,
 				118FDD7E25CE028300A5696E /* DetailsViewController.swift in Sources */,
 				117142DC25CC01B200A76E95 /* NewsFeedResponse.swift in Sources */,
