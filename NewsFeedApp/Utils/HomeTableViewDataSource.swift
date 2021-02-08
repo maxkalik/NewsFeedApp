@@ -7,52 +7,74 @@
 
 import UIKit
 
+protocol HomeTableViewDelegate: HomeViewController {
+    func loadNextBatch()
+    func didSelectRow(with link: String?)
+}
+
 class HomeTableViewDataSource: NSObject, UITableViewDataSource {
-    let tableView: UITableView
-    var dataList = [Post]()
+    private let tableView: UITableView
+    private var dataList = [Post]()
+    weak var delegate: HomeTableViewDelegate?
     
     init(tableView: UITableView) {
-        print("table view data source init", dataList)
         self.tableView = tableView
         super.init()
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 500
-        
+
+        tableView.register(LoadingTableViewCell.self, forCellReuseIdentifier: "loadingCell")
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "homeCell")
+        tableView.register(HomeTableViewCellWithPicture.self, forCellReuseIdentifier: "homeCellWithPicture")
         tableView.dataSource = self
         tableView.delegate = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataList.count
+        return dataList.count + 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == dataList.count {
+            return 50.0
+        }
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == dataList.count {
+            delegate?.loadNextBatch()
+            
+            if let spinnerCell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath) as? LoadingTableViewCell {
+                if indexPath.row != 0 { spinnerCell.startAnimating() }
+                return spinnerCell
+            }
+        }
+        let post = dataList[indexPath.row]
+        if post.picture != nil, let cellWithPicture = tableView.dequeueReusableCell(withIdentifier: "homeCellWithPicture", for: indexPath) as? HomeTableViewCellWithPicture {
+            cellWithPicture.configure(with: post)
+            return cellWithPicture
+        }
         if let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as? HomeTableViewCell {
-            let post = dataList[indexPath.row]
-            cell.titleLabel.text = post.title
-            cell.subTitleLabel.text = post.secondTitle
-            cell.dateLabel.text = Helpers.shared.getDateDifference(from: post.datetime)
-            
-            guard let imageUrlString = post.picture?.mobileRetinaUrl, let imageUrl = URL(string: Settings.hostname + imageUrlString) else { return cell }
-            cell.postImageView.load(from: imageUrl)
-            
-            // print(Settings.hostname + imageUrlString)
-            
+            cell.configure(with: post)
             return cell
         }
         return UITableViewCell()
+    }
+
+    func refresh() {
+        dataList.removeAll()
+        tableView.reloadData()
     }
 }
 
 extension HomeTableViewDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        delegate?.didSelectRow(with: dataList[indexPath.row].url)
     }
     
-    func insertRow(with data: Post) {
-        dataList.insert(data, at: 0)
-        tableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .fade)
+    func update(with data: [Post]) {
+        dataList += data
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }

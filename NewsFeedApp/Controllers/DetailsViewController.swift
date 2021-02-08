@@ -29,12 +29,6 @@ class DetailsViewController: UIViewController {
     //     print("details view")
     // }
     
-    // override func viewDidLoad() {
-    //     super.viewDidLoad()
-    //     print(selectedLink ?? "")
-    //     getDocument(from: selectedLink)
-    // }
-    
     override func loadView() {
         view = UIView()
         view.backgroundColor = .white

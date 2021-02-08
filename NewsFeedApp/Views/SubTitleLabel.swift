@@ -1,5 +1,5 @@
 //
-//  DataLabel.swift
+//  SubTitleLabel.swift
 //  NewsFeedApp
 //
 //  Created by Maksim Kalik on 2/7/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DateLabel: UILabel {
+class SubTitleLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         common()
@@ -18,9 +18,10 @@ class DateLabel: UILabel {
     }
     
     private func common() {
-        numberOfLines = 1
-        textColor =  .gray
-        font = UIFont.boldSystemFont(ofSize: 12)
+        sizeToFit()
+        numberOfLines = 0
+        lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
+        font = UIFont(name: "Georgia", size: 20)
     }
 }

@@ -67,15 +67,15 @@ final class NetworkService {
         case locale
     }
     
-    func fetchNewsFeed(fromPage pageNumber: Int, result: @escaping (Result<NewsFeedResponse, NetworkServiceError>) -> Void) {
+    func fetchNewsFeed(fromPage pageNumber: Int, perPage: Int, result: @escaping (Result<NewsFeedResponse, NetworkServiceError>) -> Void) {
         let endpoint: Endpoint = .search
         var url = baseUrl?.appendingPathComponent(endpoint.rawValue)
         
         let queries: [Queries : String] = [
                      .chrono  : "news",
                      .page    : String(pageNumber),
-                     .perPage : String(20),
-                     .locale  : "en"
+                     .perPage : String(perPage),
+                     .locale  : "ru"
         ]
         
         for query in queries {
