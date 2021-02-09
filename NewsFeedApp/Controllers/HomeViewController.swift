@@ -52,7 +52,7 @@ class HomeViewController: UIViewController {
     
     private func setupRightBarButtonItem() {
         
-        currentLanguage = defaults.object(forKey: "language") as? String ?? "en"
+        currentLanguage = defaults.object(forKey: Settings.languageKey) as? String ?? "en"
         setupLanguageButtonTitle()
         navigationItem.rightBarButtonItem = barButtonItem
         barButtonItem.target = self
@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
     
     @objc func languageChanged() {
         currentLanguage = currentLanguage == "en" ? "ru" : "en"
-        defaults.set(currentLanguage, forKey: "language")
+        defaults.set(currentLanguage, forKey: Settings.languageKey)
         setupLanguageButtonTitle()
         startRefreshing()
     }
