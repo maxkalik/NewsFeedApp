@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
     
     let tableView = UITableView()
     private var tableViewDataSource: HomeTableViewDataSource?
-    
+    let spinner = UIActivityIndicatorView()
     let refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -34,6 +34,12 @@ class HomeViewController: UIViewController {
         setupTableView()
         setupTableViewConstraints()
         setupTitle()
+        
+        view.addSubview(spinner)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        spinner.style = .large
+        setupSpinnerConstraints()
     }
     
     private func commonSetup() {
@@ -65,16 +71,31 @@ class HomeViewController: UIViewController {
         tableViewDataSource?.delegate = self
     }
     
+    private func onSuccess(with posts: DecodedArray<Post>) {
+        let news = posts.sorted { $0.datetime > $1.datetime }
+        tableViewDataSource?.update(with: news)
+        if currentPage <= 2 {
+            DispatchQueue.main.async { [self] in
+                spinner.stopAnimating()
+            }
+        }
+    }
+    
+    private func onFailure() {
+        simpleAlert(title: "Internet connection failure", msg: "For using News Feed App, you need to have internet connection on in your iPhone.")
+        DispatchQueue.main.async { [self] in
+            spinner.stopAnimating()
+        }
+    }
+    
     private func getNewsFeed(from page: Int) {
         self.currentPage += 1
         NetworkService.shared.fetchNewsFeed(fromPage: page, perPage: 20) { [self] result in
             switch result {
-            case .success(let data):
-                let news = data.documents.sorted { $0.datetime > $1.datetime }
-                tableViewDataSource?.update(with: news)
+            case .success(let data): onSuccess(with: data.documents)
             case .failure(let error):
-                simpleAlert(title: "Internet connection failure", msg: "For using News Feed App, you need to have internet connection on in your iPhone.")
                 print(error.localizedDescription)
+                onFailure()
             }
         }
     }
