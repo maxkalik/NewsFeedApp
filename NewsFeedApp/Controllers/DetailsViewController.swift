@@ -40,7 +40,7 @@ class DetailsViewController: UIViewController {
     override func loadView() {
         getDocument(from: selectedLink)
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         setupScrollView()
         setupViews()
     }
