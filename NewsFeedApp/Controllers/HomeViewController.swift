@@ -32,10 +32,14 @@ class HomeViewController: UIViewController {
     
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
         safeArea = view.layoutMarginsGuide
         setupTableView()
-        title = "News Feed"
+        
+        
+        let titleLabel = TitleLabel()
+        titleLabel.textColor = .gray
+        titleLabel.text = Helpers.shared.getDateToday()
+        navigationItem.titleView = titleLabel
     }
     
     @objc private func refresh(sender: UIRefreshControl) {

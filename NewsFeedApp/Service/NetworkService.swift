@@ -81,11 +81,13 @@ final class NetworkService {
         for query in queries {
             url?.appendQueryItem(name: query.key.rawValue, value: query.value)
         }
+        
         fetchData(url: url, completion: result)
     }
     
     func fetchNewsDetails(fromLink link: String, result: @escaping (Result<NewsDetailsResponse, NetworkServiceError>) -> Void) {
         let url = baseUrl?.appendingPathComponent(link)
+        print(url)
         fetchData(url: url, completion: result)
     }
 }

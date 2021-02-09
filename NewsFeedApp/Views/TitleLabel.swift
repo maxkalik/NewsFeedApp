@@ -22,6 +22,7 @@ class TitleLabel: UILabel {
         numberOfLines = 0
         lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
-        font = UIFont(name: "Helvetica Neue Condensed Black", size: 24)
+        // font = UIFont.systemFont(ofSize: 20, weight: .heavy)
+        font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 22)
     }
 }

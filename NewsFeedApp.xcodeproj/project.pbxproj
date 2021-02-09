@@ -25,7 +25,7 @@
 		11C47B5625D04FCF00AE89BC /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B5525D04FCF00AE89BC /* UIImageView.swift */; };
 		11C47B5925D058DD00AE89BC /* DateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B5825D058DD00AE89BC /* DateLabel.swift */; };
 		11C47B5D25D062D400AE89BC /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B5C25D062D400AE89BC /* TitleLabel.swift */; };
-		11C47B6025D064F400AE89BC /* SubTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B5F25D064F400AE89BC /* SubTitleLabel.swift */; };
+		11C47B6025D064F400AE89BC /* SecondTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B5F25D064F400AE89BC /* SecondTitleLabel.swift */; };
 		11C47B6325D0657600AE89BC /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B6225D0657600AE89BC /* PostImageView.swift */; };
 		11C47B6C25D09AEA00AE89BC /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B6B25D09AEA00AE89BC /* LoadingTableViewCell.swift */; };
 		11C47B7025D154B300AE89BC /* HomeTableViewCellWithPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B6F25D154B300AE89BC /* HomeTableViewCellWithPicture.swift */; };
@@ -56,7 +56,7 @@
 		11C47B5525D04FCF00AE89BC /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		11C47B5825D058DD00AE89BC /* DateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLabel.swift; sourceTree = "<group>"; };
 		11C47B5C25D062D400AE89BC /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
-		11C47B5F25D064F400AE89BC /* SubTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTitleLabel.swift; sourceTree = "<group>"; };
+		11C47B5F25D064F400AE89BC /* SecondTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTitleLabel.swift; sourceTree = "<group>"; };
 		11C47B6225D0657600AE89BC /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
 		11C47B6B25D09AEA00AE89BC /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		11C47B6F25D154B300AE89BC /* HomeTableViewCellWithPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCellWithPicture.swift; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 				11C47B6F25D154B300AE89BC /* HomeTableViewCellWithPicture.swift */,
 				11C47B5825D058DD00AE89BC /* DateLabel.swift */,
 				11C47B5C25D062D400AE89BC /* TitleLabel.swift */,
-				11C47B5F25D064F400AE89BC /* SubTitleLabel.swift */,
+				11C47B5F25D064F400AE89BC /* SecondTitleLabel.swift */,
 				11C47B6225D0657600AE89BC /* PostImageView.swift */,
 			);
 			path = Views;
@@ -282,7 +282,7 @@
 				11EBAB6E25CD907900F14C99 /* Constants.swift in Sources */,
 				11C47B5925D058DD00AE89BC /* DateLabel.swift in Sources */,
 				11C47B5625D04FCF00AE89BC /* UIImageView.swift in Sources */,
-				11C47B6025D064F400AE89BC /* SubTitleLabel.swift in Sources */,
+				11C47B6025D064F400AE89BC /* SecondTitleLabel.swift in Sources */,
 				114D5AEE25CDEF62007B23A9 /* Coordinator.swift in Sources */,
 				11C47B5D25D062D400AE89BC /* TitleLabel.swift in Sources */,
 				118FDD7E25CE028300A5696E /* DetailsViewController.swift in Sources */,

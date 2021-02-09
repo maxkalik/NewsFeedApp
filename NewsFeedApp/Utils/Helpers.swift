@@ -28,4 +28,11 @@ final class Helpers {
             return "Just now"
         }
     }
+    
+    func getDateToday() -> String {
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL d"
+        return dateFormatter.string(from: now)
+    }
 }

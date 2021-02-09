@@ -9,7 +9,7 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
     let titleLabel = TitleLabel()
-    let subTitleLabel = SubTitleLabel()
+    let subTitleLabel = SecondTitleLabel()
     let dateLabel = DateLabel()
     
     override func prepareForReuse() {

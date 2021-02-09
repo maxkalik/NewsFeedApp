@@ -10,7 +10,7 @@ import UIKit
 class HomeTableViewCellWithPicture: UITableViewCell {
     let postImageView = PostImageView()
     let titleLabel = TitleLabel()
-    let subTitleLabel = SubTitleLabel()
+    let subTitleLabel = SecondTitleLabel()
     let dateLabel = DateLabel()
     
     var imageCache = NSCache<NSString, UIImage>()
