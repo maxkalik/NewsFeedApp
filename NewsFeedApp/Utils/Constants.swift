@@ -9,4 +9,5 @@ import Foundation
 
 struct Settings {
     static let hostname = "https://meduza.io"
+    static let languageKey = "language"
 }
