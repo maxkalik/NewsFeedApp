@@ -17,9 +17,12 @@ class HomeViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         return refreshControl
     }()
+    private let barButtonItem = UIBarButtonItem()
     weak var coordinator: MainCoordinator?
     private var safeArea: UILayoutGuide!
     private var currentPage: Int = 1
+    private var currentLanguage = "en"
+    private let defaults = UserDefaults.standard
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -34,12 +37,42 @@ class HomeViewController: UIViewController {
         setupTableView()
         setupTableViewConstraints()
         setupTitle()
+        setupSpinner()
+        setupSpinnerConstraints()
+        setupRightBarButtonItem()
         
+    }
+    
+    private func setupSpinner() {
         view.addSubview(spinner)
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
         spinner.style = .large
-        setupSpinnerConstraints()
+    }
+    
+    private func setupRightBarButtonItem() {
+        
+        currentLanguage = defaults.object(forKey: "language") as? String ?? "en"
+        setupLanguageButtonTitle()
+        navigationItem.rightBarButtonItem = barButtonItem
+        barButtonItem.target = self
+        barButtonItem.action = #selector(languageChanged)
+    }
+    
+    private func setupLanguageButtonTitle() {
+        barButtonItem.title = currentLanguage == "en" ? "RU" : "EN"
+    }
+    
+    @objc func languageChanged() {
+        currentLanguage = currentLanguage == "en" ? "ru" : "en"
+        defaults.set(currentLanguage, forKey: "language")
+        setupLanguageButtonTitle()
+        startRefreshing()
+    }
+    
+    private func startRefreshing() {
+        currentPage = 1
+        tableViewDataSource?.refresh()
     }
     
     private func commonSetup() {
@@ -55,8 +88,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func refresh(sender: UIRefreshControl) {
-        currentPage = 1
-        tableViewDataSource?.refresh()
+        startRefreshing()
         sender.endRefreshing()
     }
     
@@ -90,7 +122,7 @@ class HomeViewController: UIViewController {
     
     private func getNewsFeed(from page: Int) {
         self.currentPage += 1
-        NetworkService.shared.fetchNewsFeed(fromPage: page, perPage: 20) { [self] result in
+        NetworkService.shared.fetchNewsFeed(fromPage: page, perPage: 20, language: currentLanguage) { [self] result in
             switch result {
             case .success(let data): onSuccess(with: data.documents)
             case .failure(let error):
