@@ -1,4 +1,4 @@
-![Word Deposit logo](logo-meduza.png)
+![News Feed App](logo-meduza.png)
 
 # News Feed App (iOS)
 
@@ -17,3 +17,5 @@ I took a challenge and made this task a bit more complicated:
 3. Prefetching and pagination
 4. Image caching
 6. 2 languages of content with saving states persistently
+
+![News Feed App Screens](screens.png)
