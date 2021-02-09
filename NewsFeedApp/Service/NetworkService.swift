@@ -75,7 +75,7 @@ final class NetworkService {
                      .chrono  : "news",
                      .page    : String(pageNumber),
                      .perPage : String(perPage),
-                     .locale  : "ru"
+                     .locale  : "en"
         ]
         
         for query in queries {
@@ -87,7 +87,6 @@ final class NetworkService {
     
     func fetchNewsDetails(fromLink link: String, result: @escaping (Result<NewsDetailsResponse, NetworkServiceError>) -> Void) {
         let url = baseUrl?.appendingPathComponent(link)
-        print(url)
         fetchData(url: url, completion: result)
     }
 }

@@ -1,13 +1,13 @@
 //
-//  TitleLabel.swift
+//  Button.swift
 //  NewsFeedApp
 //
-//  Created by Maksim Kalik on 2/7/21.
+//  Created by Maksim Kalik on 2/9/21.
 //
 
 import UIKit
 
-class TitleLabel: UILabel {
+class LinkButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         common()
@@ -18,10 +18,9 @@ class TitleLabel: UILabel {
     }
     
     private func common() {
-        sizeToFit()
-        numberOfLines = 0
-        lineBreakMode = .byWordWrapping
+        backgroundColor = .systemBlue
+        layer.cornerRadius = 8
+        isHidden = true
         translatesAutoresizingMaskIntoConstraints = false
-        font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 22)
     }
 }

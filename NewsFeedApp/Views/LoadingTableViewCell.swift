@@ -8,6 +8,7 @@
 import UIKit
 
 class LoadingTableViewCell: UITableViewCell {
+    
     let spinner: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true

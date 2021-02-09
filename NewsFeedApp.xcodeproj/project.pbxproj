@@ -18,6 +18,13 @@
 		117142D725CBFF9900A76E95 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117142D625CBFF9900A76E95 /* NetworkService.swift */; };
 		117142DC25CC01B200A76E95 /* NewsFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117142DB25CC01B200A76E95 /* NewsFeedResponse.swift */; };
 		117142E025CC020E00A76E95 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117142DF25CC020E00A76E95 /* URLSession.swift */; };
+		118E5CCC25D2122D0011C384 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118E5CCB25D2122D0011C384 /* Button.swift */; };
+		118E5CCF25D218DD0011C384 /* DetailsViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118E5CCE25D218DD0011C384 /* DetailsViewController+Constraints.swift */; };
+		118E5CD225D21C3D0011C384 /* HomeTableViewCellWithPicture+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118E5CD125D21C3D0011C384 /* HomeTableViewCellWithPicture+Constraints.swift */; };
+		118E5CD525D21CA90011C384 /* HomeTableViewCell+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118E5CD425D21CA90011C384 /* HomeTableViewCell+Constraints.swift */; };
+		118E5CD825D21D790011C384 /* HomeTableViewDataSource+UITableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118E5CD725D21D790011C384 /* HomeTableViewDataSource+UITableViewDelegates.swift */; };
+		118E5CDB25D21F640011C384 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118E5CDA25D21F640011C384 /* UIViewController.swift */; };
+		118E5CDE25D2215D0011C384 /* HomeTableViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118E5CDD25D2215D0011C384 /* HomeTableViewController+Constraints.swift */; };
 		118FDD7E25CE028300A5696E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118FDD7D25CE028300A5696E /* DetailsViewController.swift */; };
 		118FDD8325CF066D00A5696E /* HomeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118FDD8225CF066D00A5696E /* HomeTableViewDataSource.swift */; };
 		11C47B4F25D0025700AE89BC /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C47B4E25D0025700AE89BC /* HomeTableViewCell.swift */; };
@@ -49,6 +56,13 @@
 		117142D625CBFF9900A76E95 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		117142DB25CC01B200A76E95 /* NewsFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedResponse.swift; sourceTree = "<group>"; };
 		117142DF25CC020E00A76E95 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		118E5CCB25D2122D0011C384 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		118E5CCE25D218DD0011C384 /* DetailsViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsViewController+Constraints.swift"; sourceTree = "<group>"; };
+		118E5CD125D21C3D0011C384 /* HomeTableViewCellWithPicture+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeTableViewCellWithPicture+Constraints.swift"; sourceTree = "<group>"; };
+		118E5CD425D21CA90011C384 /* HomeTableViewCell+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeTableViewCell+Constraints.swift"; sourceTree = "<group>"; };
+		118E5CD725D21D790011C384 /* HomeTableViewDataSource+UITableViewDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeTableViewDataSource+UITableViewDelegates.swift"; sourceTree = "<group>"; };
+		118E5CDA25D21F640011C384 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		118E5CDD25D2215D0011C384 /* HomeTableViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeTableViewController+Constraints.swift"; sourceTree = "<group>"; };
 		118FDD7D25CE028300A5696E /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		118FDD8225CF066D00A5696E /* HomeTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewDataSource.swift; sourceTree = "<group>"; };
 		11C47B4E25D0025700AE89BC /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -141,7 +155,9 @@
 			isa = PBXGroup;
 			children = (
 				114D5AF825CDF2AF007B23A9 /* HomeViewController.swift */,
+				118E5CDD25D2215D0011C384 /* HomeTableViewController+Constraints.swift */,
 				118FDD7D25CE028300A5696E /* DetailsViewController.swift */,
+				118E5CCE25D218DD0011C384 /* DetailsViewController+Constraints.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -170,6 +186,7 @@
 				11EBAB6925CD7E4100F14C99 /* URL.swift */,
 				11C47B5225D0489F00AE89BC /* Date.swift */,
 				11C47B5525D04FCF00AE89BC /* UIImageView.swift */,
+				118E5CDA25D21F640011C384 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -178,12 +195,15 @@
 			isa = PBXGroup;
 			children = (
 				11C47B4E25D0025700AE89BC /* HomeTableViewCell.swift */,
+				118E5CD425D21CA90011C384 /* HomeTableViewCell+Constraints.swift */,
 				11C47B6B25D09AEA00AE89BC /* LoadingTableViewCell.swift */,
 				11C47B6F25D154B300AE89BC /* HomeTableViewCellWithPicture.swift */,
+				118E5CD125D21C3D0011C384 /* HomeTableViewCellWithPicture+Constraints.swift */,
 				11C47B5825D058DD00AE89BC /* DateLabel.swift */,
 				11C47B5C25D062D400AE89BC /* TitleLabel.swift */,
 				11C47B5F25D064F400AE89BC /* SecondTitleLabel.swift */,
 				11C47B6225D0657600AE89BC /* PostImageView.swift */,
+				118E5CCB25D2122D0011C384 /* Button.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +215,7 @@
 				11EBAB6D25CD907900F14C99 /* Constants.swift */,
 				114D5AE825CDEC25007B23A9 /* DecodableArray.swift */,
 				118FDD8225CF066D00A5696E /* HomeTableViewDataSource.swift */,
+				118E5CD725D21D790011C384 /* HomeTableViewDataSource+UITableViewDelegates.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -272,6 +293,7 @@
 				11EBAB6A25CD7E4100F14C99 /* URL.swift in Sources */,
 				114D5AE925CDEC25007B23A9 /* DecodableArray.swift in Sources */,
 				118FDD8325CF066D00A5696E /* HomeTableViewDataSource.swift in Sources */,
+				118E5CD825D21D790011C384 /* HomeTableViewDataSource+UITableViewDelegates.swift in Sources */,
 				117142BA25CBFF4200A76E95 /* AppDelegate.swift in Sources */,
 				11C47B7025D154B300AE89BC /* HomeTableViewCellWithPicture.swift in Sources */,
 				11C47B6C25D09AEA00AE89BC /* LoadingTableViewCell.swift in Sources */,
@@ -281,8 +303,14 @@
 				11EBAB7225CD9E0900F14C99 /* NewsDetailsResponse.swift in Sources */,
 				11EBAB6E25CD907900F14C99 /* Constants.swift in Sources */,
 				11C47B5925D058DD00AE89BC /* DateLabel.swift in Sources */,
+				118E5CDB25D21F640011C384 /* UIViewController.swift in Sources */,
 				11C47B5625D04FCF00AE89BC /* UIImageView.swift in Sources */,
+				118E5CCF25D218DD0011C384 /* DetailsViewController+Constraints.swift in Sources */,
+				118E5CD225D21C3D0011C384 /* HomeTableViewCellWithPicture+Constraints.swift in Sources */,
 				11C47B6025D064F400AE89BC /* SecondTitleLabel.swift in Sources */,
+				118E5CD525D21CA90011C384 /* HomeTableViewCell+Constraints.swift in Sources */,
+				118E5CCC25D2122D0011C384 /* Button.swift in Sources */,
+				118E5CDE25D2215D0011C384 /* HomeTableViewController+Constraints.swift in Sources */,
 				114D5AEE25CDEF62007B23A9 /* Coordinator.swift in Sources */,
 				11C47B5D25D062D400AE89BC /* TitleLabel.swift in Sources */,
 				118FDD7E25CE028300A5696E /* DetailsViewController.swift in Sources */,

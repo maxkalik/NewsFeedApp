@@ -17,10 +17,9 @@ class HomeViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         return refreshControl
     }()
-    
     weak var coordinator: MainCoordinator?
-    var safeArea: UILayoutGuide!
-    var currentPage: Int = 1
+    private var safeArea: UILayoutGuide!
+    private var currentPage: Int = 1
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -31,11 +30,18 @@ class HomeViewController: UIViewController {
     }
     
     override func loadView() {
+        commonSetup()
+        setupTableView()
+        setupTableViewConstraints()
+        setupTitle()
+    }
+    
+    private func commonSetup() {
         view = UIView()
         safeArea = view.layoutMarginsGuide
-        setupTableView()
-        
-        
+    }
+    
+    private func setupTitle() {
         let titleLabel = TitleLabel()
         titleLabel.textColor = .gray
         titleLabel.text = Helpers.shared.getDateToday()
@@ -50,15 +56,9 @@ class HomeViewController: UIViewController {
     
     private func setupTableView() {
         view.addSubview(tableView)
-
+        
         tableView.refreshControl = refreshControl
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 500
         tableView.separatorStyle = .none
         
         tableViewDataSource = HomeTableViewDataSource(tableView: tableView)
@@ -67,17 +67,20 @@ class HomeViewController: UIViewController {
     
     private func getNewsFeed(from page: Int) {
         self.currentPage += 1
-        NetworkService.shared.fetchNewsFeed(fromPage: page, perPage: 20) { result in
+        NetworkService.shared.fetchNewsFeed(fromPage: page, perPage: 20) { [self] result in
             switch result {
             case .success(let data):
                 let news = data.documents.sorted { $0.datetime > $1.datetime }
-                self.tableViewDataSource?.update(with: news)
+                tableViewDataSource?.update(with: news)
             case .failure(let error):
+                simpleAlert(title: "Internet connection failure", msg: "For using News Feed App, you need to have internet connection on in your iPhone.")
                 print(error.localizedDescription)
             }
         }
     }
 }
+
+// MARK: - HomeTableViewDelegate
 
 extension HomeViewController: HomeTableViewDelegate {
     func loadNextBatch() {

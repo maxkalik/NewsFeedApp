@@ -13,19 +13,23 @@ protocol HomeTableViewDelegate: HomeViewController {
 }
 
 class HomeTableViewDataSource: NSObject, UITableViewDataSource {
-    private let tableView: UITableView
-    private var dataList = [Post]()
+    let tableView: UITableView
+    var dataList = [Post]()
     weak var delegate: HomeTableViewDelegate?
     
     init(tableView: UITableView) {
         self.tableView = tableView
         super.init()
 
+        registerCells()
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
+    func registerCells() {
         tableView.register(LoadingTableViewCell.self, forCellReuseIdentifier: "loadingCell")
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "homeCell")
         tableView.register(HomeTableViewCellWithPicture.self, forCellReuseIdentifier: "homeCellWithPicture")
-        tableView.dataSource = self
-        tableView.delegate = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,7 +46,6 @@ class HomeTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == dataList.count {
             delegate?.loadNextBatch()
-            
             if let spinnerCell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath) as? LoadingTableViewCell {
                 if indexPath.row != 0 { spinnerCell.startAnimating() }
                 return spinnerCell
@@ -63,18 +66,5 @@ class HomeTableViewDataSource: NSObject, UITableViewDataSource {
     func refresh() {
         dataList.removeAll()
         tableView.reloadData()
-    }
-}
-
-extension HomeTableViewDataSource: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelectRow(with: dataList[indexPath.row].url)
-    }
-    
-    func update(with data: [Post]) {
-        dataList += data
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
 }
