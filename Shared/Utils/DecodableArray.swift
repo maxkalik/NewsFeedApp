@@ -37,6 +37,7 @@ extension DecodedArray: Collection {
     
     var startIndex: Index { return array.startIndex }
     var endIndex: Index { return array.endIndex }
+    var last: Element? { return array.last }
     
     subscript(index: Index) -> Element {
         get { return array[index] }

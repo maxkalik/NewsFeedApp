@@ -9,25 +9,14 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
-    
-    func getNews(complition: @escaping (DecodedArray<Post>) -> Void) {
-        NetworkService.shared.fetchNewsFeed(fromPage: 1, perPage: 5, language: "ru") { result in
-            switch result {
-            case .success(let data):
-                complition(data.documents)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
+        
     func placeholder(in context: Context) -> SimpleEntry {
-        return SimpleEntry(date: Date(), title: "")
+        return SimpleEntry(date: Date(), newsPost: NewsPost(title: "Fetching...", subtitle: nil, imageUrl: nil))
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        getNews { posts in
-            let entry = SimpleEntry(date: Date(), title: posts.first?.title ?? "")
+        NewsProvider.getNews { post in
+            let entry = SimpleEntry(date: Date(), newsPost: post)
             completion(entry)
         }
     }
@@ -35,13 +24,12 @@ struct Provider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
 
-        getNews { posts in
-            print(posts)
+        NewsProvider.getNews { post in
             // Generate a timeline consisting of five entries an hour apart, starting from the current date.
             let currentDate = Date()
             for hourOffset in 0 ..< 5 {
                 let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-                let entry = SimpleEntry(date: entryDate, title: posts.first?.title ?? "")
+                let entry = SimpleEntry(date: entryDate, newsPost: post)
                 entries.append(entry)
             }
 
@@ -55,17 +43,14 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let title: String
+    let newsPost: NewsPost
 }
 
 struct NewsFeedWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-            Text(entry.date, style: .time)
-            Text(entry.title)
-        }.padding()
+        NewsView(content: entry.newsPost)
     }
 }
 
@@ -85,7 +70,7 @@ struct NewsFeedWidget: Widget {
 
 struct NewsFeedWidget_Previews: PreviewProvider {
     static var previews: some View {
-        NewsFeedWidgetEntryView(entry: SimpleEntry(date: Date(), title: "Title"))
+        NewsFeedWidgetEntryView(entry: SimpleEntry(date: Date(), newsPost: NewsPost(title: "Russia's censorship agency orders Meduza to delete article about the official reaction to planned pro-Navalny demonstration", subtitle: nil, imageUrl: nil)))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
