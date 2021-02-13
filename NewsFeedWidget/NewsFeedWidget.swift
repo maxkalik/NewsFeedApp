@@ -11,7 +11,7 @@ import SwiftUI
 struct Provider: TimelineProvider {
     
     func getNews(complition: @escaping (DecodedArray<Post>) -> Void) {
-        NetworkService.shared.fetchNewsFeed(fromPage: 1, perPage: 5, language: "en") { result in
+        NetworkService.shared.fetchNewsFeed(fromPage: 1, perPage: 5, language: "ru") { result in
             switch result {
             case .success(let data):
                 complition(data.documents)
@@ -36,6 +36,7 @@ struct Provider: TimelineProvider {
         var entries: [SimpleEntry] = []
 
         getNews { posts in
+            print(posts)
             // Generate a timeline consisting of five entries an hour apart, starting from the current date.
             let currentDate = Date()
             for hourOffset in 0 ..< 5 {
@@ -64,7 +65,7 @@ struct NewsFeedWidgetEntryView : View {
         VStack {
             Text(entry.date, style: .time)
             Text(entry.title)
-        }
+        }.padding()
     }
 }
 

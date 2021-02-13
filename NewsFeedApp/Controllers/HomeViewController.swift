@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     private let barButtonItem = UIBarButtonItem()
     weak var coordinator: MainCoordinator?
     private var safeArea: UILayoutGuide!
-    private var currentPage: Int = 1
+    private var currentPage: Int = 0
     private var currentLanguage = "en"
     private let defaults = UserDefaults.standard
     
@@ -71,7 +71,7 @@ class HomeViewController: UIViewController {
     }
     
     private func startRefreshing() {
-        currentPage = 1
+        currentPage = 0
         tableViewDataSource?.refresh()
     }
     
@@ -106,7 +106,7 @@ class HomeViewController: UIViewController {
     private func onSuccess(with posts: DecodedArray<Post>) {
         let news = posts.sorted { $0.datetime > $1.datetime }
         tableViewDataSource?.update(with: news)
-        if currentPage <= 2 {
+        if currentPage <= 1 {
             DispatchQueue.main.async { [self] in
                 spinner.stopAnimating()
             }
