@@ -17,5 +17,6 @@ I took a challenge and made this task a bit more complicated:
 3. Prefetching and pagination
 4. Image caching
 6. 2 languages of content with saving states persistently
+6. Widgets
 
 ![News Feed App Screens](screens.png)
