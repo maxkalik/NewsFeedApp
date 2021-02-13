@@ -64,7 +64,7 @@ struct NewsFeedWidget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
-        .supportedFamilies([.systemLarge, .systemMedium, .systemSmall])
+        .supportedFamilies([.systemMedium, .systemSmall])
     }
 }
 

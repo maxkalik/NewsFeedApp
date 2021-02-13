@@ -10,6 +10,8 @@ Write an app that fetches data from the web and displays data in a list. As a mi
 
 ## Description
 
+![News Feed App Screens](screens.png)
+
 I took a challenge and made this task a bit more complicated:
 
 1. Without Storyboard
@@ -17,6 +19,13 @@ I took a challenge and made this task a bit more complicated:
 3. Prefetching and pagination
 4. Image caching
 6. 2 languages of content with saving states persistently
-6. Widgets
+6. Widgets with latets news (systemMedium and systemSmall)
 
-![News Feed App Screens](screens.png)
+![News Feed App Screens](widget.png)
+
+## Enhancements Todo
+
+1. Get rid of ancors - too much codes.
+2. Rebuild architecture (not usable now)
+3. Reorganize hard-constants
+4. Refactor dependecies in VC and localization
