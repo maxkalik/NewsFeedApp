@@ -9,7 +9,7 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
-        
+    
     func placeholder(in context: Context) -> SimpleEntry {
         return SimpleEntry(date: Date(), newsPost: NewsPost(title: "Fetching...", subtitle: nil, imageUrl: nil))
     }
@@ -23,7 +23,7 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
-
+        
         NewsProvider.getNews { post in
             // Generate a timeline consisting of five entries an hour apart, starting from the current date.
             let currentDate = Date()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110BE5F425D77442009B8F61 /* NewsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8234925D742C100A17AE9 /* NewsProvider.swift */; };
 		114D5AE925CDEC25007B23A9 /* DecodableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D5AE825CDEC25007B23A9 /* DecodableArray.swift */; };
 		114D5AEE25CDEF62007B23A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D5AED25CDEF62007B23A9 /* Coordinator.swift */; };
 		114D5AF225CDEF8F007B23A9 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D5AF125CDEF8F007B23A9 /* MainCoordinator.swift */; };
@@ -111,8 +112,6 @@
 		11B8233C25D7407300A17AE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11B8234925D742C100A17AE9 /* NewsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsProvider.swift; sourceTree = "<group>"; };
 		11B8237325D754A100A17AE9 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
-		11B8238125D760E000A17AE9 /* NewsFeedApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NewsFeedApp.entitlements; sourceTree = "<group>"; };
-		11B8238625D7618100A17AE9 /* NewsFeedWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NewsFeedWidgetExtension.entitlements; sourceTree = "<group>"; };
 		11C47B4E25D0025700AE89BC /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		11C47B5225D0489F00AE89BC /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		11C47B5525D04FCF00AE89BC /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -160,7 +159,6 @@
 		117142AD25CBFF4200A76E95 = {
 			isa = PBXGroup;
 			children = (
-				11B8238625D7618100A17AE9 /* NewsFeedWidgetExtension.entitlements */,
 				11B8234625D7408300A17AE9 /* Shared */,
 				117142B825CBFF4200A76E95 /* NewsFeedApp */,
 				11B8233725D7407200A17AE9 /* NewsFeedWidget */,
@@ -181,7 +179,6 @@
 		117142B825CBFF4200A76E95 /* NewsFeedApp */ = {
 			isa = PBXGroup;
 			children = (
-				11B8238125D760E000A17AE9 /* NewsFeedApp.entitlements */,
 				11C47B4D25D0013800AE89BC /* Views */,
 				114D5AEC25CDEF45007B23A9 /* Coordinator */,
 				11EBAB2325CC87CC00F14C99 /* Utils */,
@@ -448,6 +445,7 @@
 				11C47B6025D064F400AE89BC /* SecondTitleLabel.swift in Sources */,
 				118E5CD525D21CA90011C384 /* HomeTableViewCell+Constraints.swift in Sources */,
 				118E5CCC25D2122D0011C384 /* Button.swift in Sources */,
+				110BE5F425D77442009B8F61 /* NewsProvider.swift in Sources */,
 				118E5CDE25D2215D0011C384 /* HomeTableViewController+Constraints.swift in Sources */,
 				114D5AEE25CDEF62007B23A9 /* Coordinator.swift in Sources */,
 				11C47B5D25D062D400AE89BC /* TitleLabel.swift in Sources */,
@@ -622,7 +620,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = NewsFeedApp/NewsFeedApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = NewsFeedApp/NewsFeedAppDebug.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P353H6D448;
 				INFOPLIST_FILE = "$(SRCROOT)/NewsFeedApp/Supporting Files/Info.plist";
@@ -630,8 +629,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = maxkalik.com.NewsFeedApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maxkalik.NewsFeedApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -644,6 +644,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NewsFeedApp/NewsFeedApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P353H6D448;
 				INFOPLIST_FILE = "$(SRCROOT)/NewsFeedApp/Supporting Files/Info.plist";
@@ -651,8 +652,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = maxkalik.com.NewsFeedApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maxkalik.NewsFeedApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -663,7 +665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = NewsFeedWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = NewsFeedWidgetExtensionDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P353H6D448;
 				INFOPLIST_FILE = NewsFeedWidget/Info.plist;
@@ -673,7 +675,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = maxkalik.com.NewsFeedApp.Widget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maxkalik.NewsFeedApp.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -696,7 +698,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = maxkalik.com.NewsFeedApp.Widget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maxkalik.NewsFeedApp.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

@@ -8,12 +8,15 @@
 import Foundation
 
 public struct NewsProvider {
+    
+    
+    
     static func getNews(complition: @escaping (NewsPost) -> Void) {
         
-        let currentLanguage = UserDefaults.standard.object(forKey: Settings.languageKey) as? String ?? "en"
-        print(UserDefaults.standard.object(forKey: Settings.languageKey))
+        let userDefaults = UserDefaults(suiteName: "group.com.maxkalik.NewsFeedApp.Meduza")
+        let language = userDefaults?.string(forKey: Settings.languageKey) ?? "en"
         
-        NetworkService.shared.fetchNewsFeed(fromPage: 0, perPage: 1, language: currentLanguage) { result in
+        NetworkService.shared.fetchNewsFeed(fromPage: 0, perPage: 1, language: language) { result in
             switch result {
             case .success(let data):
                 let post = data.documents.last

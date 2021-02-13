@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
     private var safeArea: UILayoutGuide!
     private var currentPage: Int = 0
     private var currentLanguage = "en"
-    private let defaults = UserDefaults.standard
+    private let userDefaults = UserDefaults(suiteName: "group.com.maxkalik.NewsFeedApp.Meduza")
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -53,7 +53,9 @@ class HomeViewController: UIViewController {
     
     private func setupRightBarButtonItem() {
         
-        currentLanguage = defaults.object(forKey: Settings.languageKey) as? String ?? "en"
+        if let userDefaults = self.userDefaults {
+            currentLanguage = userDefaults.string(forKey: Settings.languageKey) ?? "en"
+        }
         setupLanguageButtonTitle()
         navigationItem.rightBarButtonItem = barButtonItem
         barButtonItem.target = self
@@ -66,7 +68,11 @@ class HomeViewController: UIViewController {
     
     @objc func languageChanged() {
         currentLanguage = currentLanguage == "en" ? "ru" : "en"
-        defaults.set(currentLanguage, forKey: Settings.languageKey)
+        
+        if let userDefaults = self.userDefaults {
+            userDefaults.set(currentLanguage, forKey: Settings.languageKey)
+        }
+        
         if #available(iOS 14.0, *) {
             WidgetCenter.shared.reloadTimelines(ofKind: "NewsFeedWidget")
         }
