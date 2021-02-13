@@ -14,17 +14,11 @@ struct NewsView: View {
     @Environment(\.widgetFamily) var widgetFamily
     
     var body: some View {
-        VStack {
-          Text(content.title ?? "")
-            .font(.custom("HelveticaNeue-CondensedBlack", size: widgetFamily == .systemMedium ? 18 : 14))
-            
-            // .multilineTextAlignment(.center)
-        Text(content.subtitle ?? "")
-            .font(.system(size: 10))
-            // .multilineTextAlignment(.center)
-            // .padding(.top, 5)
-            // .padding([.leading, .trailing])
-            // .foregroundColor(.white)
+        VStack(alignment: .leading, spacing: 0) {
+            Text(content.title ?? "")
+                .font(.custom("HelveticaNeue-CondensedBlack", size: widgetFamily == .systemMedium ? 18 : 14))
+            Text(content.subtitle ?? "")
+                .font(.custom("Georgia", size: widgetFamily == .systemMedium ? 14 : 12))
         }.padding()
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WidgetKit
 
 class HomeViewController: UIViewController {
     
@@ -66,6 +67,9 @@ class HomeViewController: UIViewController {
     @objc func languageChanged() {
         currentLanguage = currentLanguage == "en" ? "ru" : "en"
         defaults.set(currentLanguage, forKey: Settings.languageKey)
+        if #available(iOS 14.0, *) {
+            WidgetCenter.shared.reloadTimelines(ofKind: "NewsFeedWidget")
+        }
         setupLanguageButtonTitle()
         startRefreshing()
     }

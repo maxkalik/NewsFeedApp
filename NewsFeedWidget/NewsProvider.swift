@@ -9,7 +9,11 @@ import Foundation
 
 public struct NewsProvider {
     static func getNews(complition: @escaping (NewsPost) -> Void) {
-        NetworkService.shared.fetchNewsFeed(fromPage: 0, perPage: 1, language: "ru") { result in
+        
+        let currentLanguage = UserDefaults.standard.object(forKey: Settings.languageKey) as? String ?? "en"
+        print(UserDefaults.standard.object(forKey: Settings.languageKey))
+        
+        NetworkService.shared.fetchNewsFeed(fromPage: 0, perPage: 1, language: currentLanguage) { result in
             switch result {
             case .success(let data):
                 let post = data.documents.last
