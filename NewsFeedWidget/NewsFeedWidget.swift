@@ -70,7 +70,13 @@ struct NewsFeedWidget: Widget {
 
 struct NewsFeedWidget_Previews: PreviewProvider {
     static var previews: some View {
-        NewsFeedWidgetEntryView(entry: SimpleEntry(date: Date(), newsPost: NewsPost(title: "Russia's censorship agency orders Meduza to delete article about the official reaction to planned pro-Navalny demonstration", subtitle: nil, imageUrl: nil)))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        let newsPost = NewsPost(title: "Russia's censorship agency orders Meduza to delete article about the official reaction to planned pro-Navalny demonstration", subtitle: nil, imageUrl: nil)
+        Group {
+            NewsFeedWidgetEntryView(entry: SimpleEntry(date: Date(), newsPost: newsPost))
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            NewsFeedWidgetEntryView(entry: SimpleEntry(date: Date(), newsPost: newsPost))
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+            
+        }
     }
 }
